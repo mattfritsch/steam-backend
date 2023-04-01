@@ -1,4 +1,4 @@
 # steam-backend
-Project school
+School project
 
 FRITSCH Matthieu, CARL Noé, KREBS Jérémie
