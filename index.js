@@ -1,8 +1,17 @@
 const express = require('express');
 const app = express();
 
+const bodyParser = require('body-parser');
+
 const { Client } = require('@elastic/elasticsearch')
 const client = new Client({ node: 'http://localhost:9200' })
+
+const Joi = require('joi');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+const dotenv = require('dotenv');
+dotenv.config();
 
 app.get(
     '/games/from/:from/size/:size',
@@ -98,7 +107,7 @@ app.get(
                                     match_phrase_prefix: {
                                         name: {
                                             query: search,
-                                            max_expansions: 50
+                                            max_expansions: 10
                                         }
                                     }
                                 }
@@ -114,5 +123,110 @@ app.get(
         }
     }
 )
-app.listen(8080, () => {    console.log("Serveur à l'écoute")})
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
+
+app.post(
+    '/user/register',
+    async (req, res) => {
+        try {
+            const schema = Joi.object({
+                username: Joi.string().required(),
+                mail: Joi.string().email().required(),
+                password: Joi.string().required(),
+                favorite: Joi.array().items(Joi.object())
+            });
+
+            const { error } = schema.validate(req.body);
+            if (error) {
+                return res.status(400).send(error.details[0].message);
+            }
+
+            const { username, mail, password } = req.body;
+
+            const indexExists = await client.indices.exists({ index: 'users' });
+            if (!indexExists) {
+                await client.indices.create({ index: 'users' });
+            }
+
+            const usernameExists = await client.search({
+                index: 'users',
+                body: {
+                    query: {
+                        match: { username }
+                    }
+                }
+            });
+            if (usernameExists.hits.total.value > 0) {
+                return res.status(400).send('Un utilisateur avec ce nom d\'utilisateur existe déjà.');
+            }
+
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+            const response = await client.index({
+                index: 'users',
+                body: {
+                    username,
+                    mail,
+                    hashedPassword,
+                    favorite: []
+                },
+            });
+
+            res.send('Compte créé avec succès');
+        }
+        catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+    }
+);
+
+app.post(
+    '/user/login',
+    async (req, res) => {
+        try {
+            const {username, password} = req.body;
+
+            if (!password || password.trim().length === 0) {
+                return res.status(400).send('Mot de passe invalide');
+            }
+
+            const body  = await client.search({
+                index: 'users',
+                body: {
+                    query: {
+                        match: {
+                            username: username
+                        }
+                    }
+                }
+            });
+
+
+            if (body.hits.total.value === 0) {
+                return res.status(400).send('Nom d\'utilisateur incorrect');
+            }
+
+            const user = body.hits.hits[0]._source;
+            const passwordIsValid = await bcrypt.compare(password, user.hashedPassword);
+            if(!passwordIsValid) {
+                return res.status(400).send('Mot de passe incorrect');
+            }
+
+            const token = jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: '1h' });
+
+            res.send({ token });
+        }
+        catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+    }
+)
+
+
+app.listen(8080, () => {    console.log("Serveur à l'écoute")})
