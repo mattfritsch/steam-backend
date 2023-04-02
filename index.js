@@ -94,7 +94,7 @@ app.get(
                 body: {
                     query: {
                         bool: {
-                            should: [
+                            must: [
                                 {
                                     match: {
                                         name: {
