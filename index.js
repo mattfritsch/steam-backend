@@ -3,8 +3,16 @@ const app = express();
 const gamesController = require('./routes/games');
 const usersController = require('./routes/users');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 app.listen(8080, () => {    console.log("Serveur à l'écoute")})
+
+app.use(cors()); // utilise le middleware cors
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
