@@ -1,7 +1,6 @@
 const fs = require('fs');
 const csv = require('fast-csv');
-const { Client } = require('@elastic/elasticsearch');
-const client = new Client({ node: 'http://localhost:9200' }); // Adresse du serveur Elasticsearch
+const client = require('../config/elasticsearch-client');
 
 const files = ['../csv/steam.csv', '../csv/steam_description_data.csv', '../csv/steam_requirements_data.csv','../csv/steam_support_info.csv', '../csv/steam_media_data.csv']; // Liste des fichiers à traiter
 let results = {}; // Objet pour stocker les résultats
