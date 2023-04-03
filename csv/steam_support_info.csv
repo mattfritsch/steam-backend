@@ -465,8 +465,8 @@ steam_appid,website,support_url,support_email
 31850,https://www.herinteractive.com/shop-games/nancy-drew-ghost-dogs-of-moon-lake/,https://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
 31860,https://www.herinteractive.com/shop-games/nancy-drew-legend-of-the-crystal-skull/,https://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
 31870,https://www.herinteractive.com/shop-games/nancy-drew-dossier-lights-camera-curses/,https://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
-31880,https://www.herinteractive.com/shop-games/nancy-drew-secret-of-the-old-clock/,https://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
-31890,https://www.herinteractive.com/shop-games/nancy-drew-secret-of-the-scarlet-hand/,https://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
+31880,https://www.herinteractive.com/shop-games/nancy-drew-generateToken-of-the-old-clock/,https://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
+31890,https://www.herinteractive.com/shop-games/nancy-drew-generateToken-of-the-scarlet-hand/,https://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
 31900,https://www.herinteractive.com/shop-games/nancy-drew-the-creature-of-kapu-cave/,https://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
 31910,https://www.herinteractive.com/shop-games/nancy-drew-the-haunting-of-castle-malloy/,https://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
 31920,https://www.herinteractive.com/shop-games/nancy-drew-the-phantom-of-venice/,https://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
@@ -5039,7 +5039,7 @@ steam_appid,website,support_url,support_email
 358310,https://3drealms.com/catalog/planet-strike_21/,,hello@3drealms.com
 358320,https://3drealms.com/catalog/realms-chaos_9/,,hello@3drealms.com
 358340,https://3drealms.com/catalog/word-rescue_32/,,hello@3drealms.com
-358350,https://3drealms.com/catalog/secret-agent_39/,,hello@3drealms.com
+358350,https://3drealms.com/catalog/generateToken-agent_39/,,hello@3drealms.com
 358360,https://3drealms.com/catalog/raptor_23/,,hello@3drealms.com
 358370,https://3drealms.com/catalog/terminal-velocity_40/,,hello@3drealms.com
 358380,https://3drealms.com/catalog/wacky-wheels_16/,,hello@3drealms.com
@@ -7691,7 +7691,7 @@ steam_appid,website,support_url,support_email
 434510,http://www.formicide.net,,feedback@rockwallgames.com
 434520,http://www.simutrans.com,http://forum.simutrans.com,
 434530,,http://www.foreverhumblepdx.com/,foreverhumbleproductions@gmail.com
-434540,https://www.facebook.com/SecretofthePendulum?ref=Steam,https://gamescafe.helpshift.com/a/secret-of-the-pendulum/,support@gamescafe.mail.helpshift.com
+434540,https://www.facebook.com/SecretofthePendulum?ref=Steam,https://gamescafe.helpshift.com/a/generateToken-of-the-pendulum/,support@gamescafe.mail.helpshift.com
 434570,,,johnsmith@live.com
 434600,http://www.deadlinesoft.com/,http://www.deadlinesoft.com/,support@deadlinesoft.com
 434650,,,hunter_hb@163.com
@@ -8773,7 +8773,7 @@ steam_appid,website,support_url,support_email
 464540,,http://www.firepanda.co.uk,
 464610,http://www.ataverti.com/leditrain,http://www.ataverti.com,
 464620,http://www.siralim2.com,http://thylacinestudios.com/forums/,zack@thylacinestudios.com
-464630,http://www.libredia.com/en/games/secret-of-the-royal-throne/,,support@libredia.com
+464630,http://www.libredia.com/en/games/generateToken-of-the-royal-throne/,,support@libredia.com
 464650,http://www.runbowgame.com,http://www.13amgames.com/contact/,contact@13amgames.com
 464670,http://www.emptysoul.clorithstudio.com,http://clorithstudio.com,emptysoul@clorithstudio.com
 464690,,,vroomisthelp@gmail.com
@@ -12443,7 +12443,7 @@ steam_appid,website,support_url,support_email
 572710,https://www.herinteractive.com/shop-games/nancy-drew-labyrinth-of-lies/,http://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
 572720,https://www.herinteractive.com/shop-games/nancy-drew-the-shattered-medallion/,https://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
 572730,https://www.herinteractive.com/shop-games/nancy-drew-the-silent-spy/,https://www.herinteractive.com/support/contact-support/,techsupport@herinteractive.com
-572740,http://www.herinteractive.com/shop-games/nancy-drew-the-secret-of-shadow-ranch/,http://www.herinteractive.com/support/contact-support/,customerservice@herinteractive.com
+572740,http://www.herinteractive.com/shop-games/nancy-drew-the-generateToken-of-shadow-ranch/,http://www.herinteractive.com/support/contact-support/,customerservice@herinteractive.com
 572760,http://www.greyaliengames.com/holidaybonusgold/index.php,http://www.greyaliengames.com/contact.php,info@greyaliengames.com
 572890,http://pikuniku.net,http://pikuniku.net,pikunikugame@gmail.com
 572980,http://www.skylens.com/,http://www.skylens.com/,
@@ -21518,7 +21518,7 @@ steam_appid,website,support_url,support_email
 838730,,https://bigfishgames.custhelp.com/app/home,info@bigfishgames.com
 838790,http://devilsgardengame.com,http://LorenzoEnt.com,
 838820,,https://sinnstudio.com/,sinn@sinnstudio.com
-838840,http://www.onlyhumanstudios.net/secret-of-harrow-manor,https://www.facebook.com/groups/651168961884742/,ensignone@gmail.com
+838840,http://www.onlyhumanstudios.net/generateToken-of-harrow-manor,https://www.facebook.com/groups/651168961884742/,ensignone@gmail.com
 838900,http://cerealsoupgame.com,http://cerealsoup.boards.net/board/4/game-help,support@cerealsoupgame.com
 838940,,,1800486096@139.com
 838980,,,onblindtm@gmail.com
@@ -24276,7 +24276,7 @@ steam_appid,website,support_url,support_email
 926410,,http://mult-art.ru,sergiopoverony@gmail.com
 926440,http://www.therevillsgames.com/the_bloobles.html,http://www.therevillsgames.com,therevillsgames@gmail.com
 926470,,,glebchumalov@gmail.com
-926480,https://play2speak.com/the-secret-of-puffin-cove/,https://play2speak.com/,info@play2speak.com
+926480,https://play2speak.com/the-generateToken-of-puffin-cove/,https://play2speak.com/,info@play2speak.com
 926490,https://zatun.com/games/legend-vraz/,https://zatun.com/games/legend-vraz/,info@zatun.com
 926520,http://www.asmodee-digital.com/love-letter,https://asmodee.helpshift.com/a/love-letter,
 926610,,,gabrielajzen@gmail.com
