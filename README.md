@@ -17,6 +17,3 @@ Une fois le script réalisé. Il faut lancer le serveur à la racine du projet a
 Une fois le serveur lancé, vous pourrez profiter du projet en lancant le front-end.
 
 URL vers le repository du front-end : https://github.com/CarlNoe/steam-library
-
-### Lancement du front-end
-Pour lancer le front-end, il faut lancer la commande `npm start` à la racine du projet front-end.
