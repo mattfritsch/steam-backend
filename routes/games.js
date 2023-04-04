@@ -40,7 +40,10 @@ const getGamesByPaginationAndSort = async (req, res) => {
     try{
         const from = parseInt(req.params.from);
         const size = parseInt(req.params.size);
-        const field = req.params.field + '.keyword';
+        let field = req.params.field + '.keyword'
+        if(req.params.field === "release_date"){
+            field = req.params.field;
+        }
         const order = req.params.order;
         const response = await client.search({
             index: 'steam_games',
@@ -51,6 +54,17 @@ const getGamesByPaginationAndSort = async (req, res) => {
                 query: {
                     "match_all": {},
                 },
+                /*...(req.params.field === "release_date" ? {
+                    sort: [
+                        {
+                            'release_date': {
+                                order: order,
+                                unmapped_type: "date",
+                                format: "yyyy-MM-dd"
+                            }
+                        }
+                    ]
+                } : {})*/
             }
         })
         res.send(response.hits.hits)
