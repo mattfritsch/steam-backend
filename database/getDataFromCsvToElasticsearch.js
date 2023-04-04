@@ -1,6 +1,8 @@
 const fs = require('fs');
 const csv = require('fast-csv');
 const client = require('../config/elasticsearch-client');
+const bcrypt = require('bcrypt');
+const utils = require("../utils/utils");
 
 const files = ['../csv/steam.csv', '../csv/steam_description_data.csv', '../csv/steam_requirements_data.csv','../csv/steam_support_info.csv', '../csv/steam_media_data.csv']; // Liste des fichiers à traiter
 let results = {}; // Objet pour stocker les résultats
@@ -61,6 +63,31 @@ async function indexData() {
         });
     }
     console.log('Données indexées dans Elasticsearch');
+
+    // Ajoute deux utilisateurs
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash('mdp123', salt);
+    await client.index({
+        index: 'users',
+        body: {
+            id: utils.randomId(),
+            username: 'matthieu',
+            mail: 'mattfritsch@gmail.com',
+            hashedPassword: hashedPassword,
+            favorites: []
+        }
+    });
+    await client.index({
+        index: 'users',
+        body: {
+            id: utils.randomId(),
+            username: 'noe',
+            mail: 'noecarl@gmail.com',
+            hashedPassword: hashedPassword,
+            favorites: []
+        }
+    });
+    console.log('Deux utilisateurs ont été ajoutés à l\'index users');
 }
 
 // Appel de la fonction principale
