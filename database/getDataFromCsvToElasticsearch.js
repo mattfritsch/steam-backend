@@ -62,7 +62,7 @@ async function indexData() {
             body: result
         });
     }
-    console.log('Données indexées dans Elasticsearch');
+    console.log('Données indexées dans Elasticsearch !');
 
     // Ajoute deux utilisateurs
     const salt = await bcrypt.genSalt(10);
