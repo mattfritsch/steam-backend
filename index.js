@@ -26,7 +26,7 @@ app.get('/games/:id', gamesController.getGameById);
 //GET : récupère la liste des jeux en utilisant la pagination (from et size) et le tri (field : champs à trier et order: ordre du tri)
 app.get('/games/from/:from/size/:size/field/:field/order/:order', gamesController.getGamesByPaginationAndSort);
 //GET : récupère la liste des jeux en utilisant la pagination (from et size) et la recherche (search)
-app.get('/games/size/:size/search/:search', gamesController.searchGames);
+app.get('/games/from/:from/size/:size/search/:search', gamesController.searchGames);
 
 //POST : enregistre un utilisateur
 app.post('/user/register', usersController.registerUser);

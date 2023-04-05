@@ -83,9 +83,11 @@ const getGamesByPaginationAndSort = async (req, res) => {
 const searchGames = async (req, res) => {
     try{
         const search = req.params.search;
+        const from = parseInt(req.params.from);
         const size = parseInt(req.params.size);
         const response = await client.search({
             index: 'steam_games',
+            from: from,
             size: size,
             body: {
                 query: {
