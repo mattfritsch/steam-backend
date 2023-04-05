@@ -55,7 +55,7 @@ const registerUser = async (req, res) => {
             },
         });
 
-        res.send('Compte créé avec succès');
+        res.send({username, mail, password});
     }
     catch (error) {
         console.error(error);
