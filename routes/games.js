@@ -137,7 +137,7 @@ const searchGamesForAutoCompletion = async (req, res) => {
                         ]
                     }
                 },
-                _source: ["_id", "name"] // ajouter cette option pour spécifier les champs à renvoyer
+                _source: ["_id", "name", "header_image"]
             }
         });
         const hits = response.hits.hits.map(hit => {
