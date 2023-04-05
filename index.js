@@ -4,6 +4,7 @@ const gamesController = require('./routes/games');
 const usersController = require('./routes/users');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 app.listen(8080, () => {    console.log("Serveur à l'écoute")})
 
@@ -16,6 +17,7 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser())
 
 //GET : récupère la liste des jeux en utilisant la pagination (from et size)
 app.get('/games/from/:from/size/:size', gamesController.getGamesByPagination);

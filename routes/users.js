@@ -95,7 +95,8 @@ const loginUser = async (req, res) => {
 
         const token = jwt.sign({ id: body.hits.hits[0]._id }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
 
-        res.send({ token });
+        res.cookie('token', token, { maxAge: 3600000, httpOnly: true }); //maxAge est défini en millisecondes
+        res.send("Connexion effectuée avec succès");
     }
     catch (error) {
         console.error(error);
