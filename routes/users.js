@@ -140,8 +140,6 @@ const addFavorite = async (req, res) => {
                 }
             }
         });
-
-        res.send('Jeu ajouté aux favoris');
     }
     catch (error) {
         console.error(error);
