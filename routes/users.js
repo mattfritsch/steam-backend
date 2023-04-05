@@ -107,7 +107,6 @@ const addFavorite = async (req, res) => {
     try {
         const userId = utils.getCurrentUserId(req);
 
-        // Récupérer le jeu Steam avec l'id passé en paramètre
         const gameId = req.params.id;
 
         if (!gameId) {
@@ -119,7 +118,6 @@ const addFavorite = async (req, res) => {
             id: gameId
         });
 
-        // Vérifier que le jeu existe
         if (!game.found) {
             return res.status(404).send('Jeu introuvable');
         }
@@ -149,10 +147,8 @@ const addFavorite = async (req, res) => {
 
 const removeFavorite = async (req, res) => {
     try {
-        // Récupérer l'utilisateur couramment connecté à partir du token JWT
         const userId = utils.getCurrentUserId(req);
 
-        // Récupérer le jeu Steam avec l'id passé en paramètre
         const gameId = req.params.id;
 
         if (!gameId) {
@@ -164,7 +160,6 @@ const removeFavorite = async (req, res) => {
             id: gameId
         });
 
-        // Vérifier que le jeu existe
         if (!game.found) {
             return res.status(404).send('Jeu introuvable');
         }

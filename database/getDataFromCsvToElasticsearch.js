@@ -6,7 +6,7 @@ const utils = require("../utils/utils");
 const mapping = require("./mapping");
 
 const files = ['../csv/steam.csv', '../csv/steam_description_data.csv', '../csv/steam_requirements_data.csv','../csv/steam_support_info.csv', '../csv/steam_media_data.csv']; // Liste des fichiers à traiter
-let results = {}; // Objet pour stocker les résultats
+let results = {}; //Array qui contiendra les résultats
 
 // Fonction pour traiter chaque fichier CSV
 async function processFile(file) {
@@ -60,6 +60,7 @@ async function processFiles() {
 }
 
 async function indexData() {
+    //Appel de la fonction pour créer l'index et le mapping dans le fichier mapping.js
     await mapping();
     // Appel de la fonction pour traiter les fichiers CSV
     const results = await processFiles();
@@ -99,5 +100,4 @@ async function indexData() {
     console.log('Deux utilisateurs ont été ajoutés à l\'index users');
 }
 
-// Appel de la fonction principale
 indexData();
