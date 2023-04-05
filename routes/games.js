@@ -92,7 +92,7 @@ const searchGames = async (req, res) => {
             body: {
                 query: {
                     bool: {
-                        should: [
+                        must: [
                             {
                                 match: {
                                     name: {
