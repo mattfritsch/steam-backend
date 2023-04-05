@@ -55,7 +55,7 @@ const registerUser = async (req, res) => {
             },
         });
 
-        res.send({username, mail, password});
+        res.send("Utilisateur créé avec succès");
     }
     catch (error) {
         console.error(error);
@@ -96,7 +96,7 @@ const loginUser = async (req, res) => {
         const token = jwt.sign({ id: body.hits.hits[0]._id }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
 
         res.cookie('token', token, { maxAge: 3600000, httpOnly: true }); //maxAge est défini en millisecondes
-        res.send("Connexion effectuée avec succès");
+        res.send(username);
     }
     catch (error) {
         console.error(error);
