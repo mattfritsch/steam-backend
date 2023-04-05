@@ -41,6 +41,9 @@ const getGamesByPaginationAndSort = async (req, res) => {
         const from = parseInt(req.params.from);
         const size = parseInt(req.params.size);
         let field = req.params.field;
+        if(field === "name"){
+            field = "name.keyword";
+        }
         const order = req.params.order;
         const response = await client.search({
             index: 'steam_games',
@@ -87,7 +90,7 @@ const searchGames = async (req, res) => {
             body: {
                 query: {
                     bool: {
-                        must: [
+                        should: [
                             {
                                 match: {
                                     name: {
@@ -115,8 +118,6 @@ const searchGames = async (req, res) => {
         res.status(500).send(error.message);
     }
 };
-
-
 
 module.exports = {
     getGamesByPagination,

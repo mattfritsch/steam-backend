@@ -30,7 +30,12 @@ const mapping = async () => {
                         type: 'text',
                     },
                     name: {
-                        type: 'keyword',
+                        type: 'text',
+                        fields: {
+                            keyword: {
+                                type: 'keyword',
+                            }
+                        }
                     },
                     developer: {
                         type: 'keyword',
