@@ -40,31 +40,34 @@ const getGamesByPaginationAndSort = async (req, res) => {
     try{
         const from = parseInt(req.params.from);
         const size = parseInt(req.params.size);
-        let field = req.params.field + '.keyword'
-        if(req.params.field === "release_date"){
-            field = req.params.field;
-        }
+        let field = req.params.field;
         const order = req.params.order;
         const response = await client.search({
             index: 'steam_games',
             from: from,
             size: size,
             body: {
-                sort: [{[field]: {order: order}}],
+                sort: [
+                    {
+                        [field]: {
+                            order: order,
+                        }
+                    }
+                ],
                 query: {
                     "match_all": {},
                 },
-                /*...(req.params.field === "release_date" ? {
+                ...(req.params.field === "release_date" ? {
                     sort: [
                         {
-                            'release_date': {
+                            [field]: {
                                 order: order,
                                 unmapped_type: "date",
                                 format: "yyyy-MM-dd"
                             }
                         }
                     ]
-                } : {})*/
+                } : {})
             }
         })
         res.send(response.hits.hits)
@@ -112,6 +115,8 @@ const searchGames = async (req, res) => {
         res.status(500).send(error.message);
     }
 };
+
+
 
 module.exports = {
     getGamesByPagination,

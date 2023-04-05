@@ -48,8 +48,8 @@ const registerUser = async (req, res) => {
             index: 'users',
             body: {
                 id: utils.randomId(),
-                username: username,
                 mail: mail,
+                username: username,
                 hashedPassword: hashedPassword,
                 favorites: []
             },

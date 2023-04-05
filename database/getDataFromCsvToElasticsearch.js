@@ -3,6 +3,7 @@ const csv = require('fast-csv');
 const client = require('../config/elasticsearch-client');
 const bcrypt = require('bcrypt');
 const utils = require("../utils/utils");
+const mapping = require("./mapping");
 
 const files = ['../csv/steam.csv', '../csv/steam_description_data.csv', '../csv/steam_requirements_data.csv','../csv/steam_support_info.csv', '../csv/steam_media_data.csv']; // Liste des fichiers à traiter
 let results = {}; // Objet pour stocker les résultats
@@ -21,6 +22,13 @@ async function processFile(file) {
             .on('data', (data) => {
                 const id = data[idFieldName];
                 delete data[idFieldName];
+
+                // Convertit les champs numériques en nombres
+                for (const [key, value] of Object.entries(data)) {
+                    if (!isNaN(value)) {
+                        data[key] = Number(value);
+                    }
+                }
 
                 if (results[id]) {
                     Object.assign(results[id], data);
@@ -52,6 +60,7 @@ async function processFiles() {
 }
 
 async function indexData() {
+    await mapping();
     // Appel de la fonction pour traiter les fichiers CSV
     const results = await processFiles();
 
