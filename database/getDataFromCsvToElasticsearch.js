@@ -10,6 +10,7 @@ let results = {}; //Array qui contiendra les résultats
 
 // Fonction pour traiter chaque fichier CSV
 async function processFile(file) {
+    const intFields = ['id', 'required_age', 'achievements', 'positive_ratings', 'negative_ratings', 'average_playtime', 'median_playtime', 'price']; // Noms des champs à convertir en entier
     return new Promise((resolve, reject) => {
         const stream = fs.createReadStream(file);
         let idFieldName = 'steam_appid'; // nom de l'ID par défaut
@@ -23,10 +24,10 @@ async function processFile(file) {
                 const id = data[idFieldName];
                 delete data[idFieldName];
 
-                // Convertit les champs numériques en nombres
-                for (const [key, value] of Object.entries(data)) {
-                    if (!isNaN(value)) {
-                        data[key] = Number(value);
+                // Convertit les champs spécifiés en int
+                for (const field of intFields) {
+                    if (typeof data[field] === 'string' && !isNaN(data[field])) {
+                        data[field] = parseInt(data[field]);
                     }
                 }
 
