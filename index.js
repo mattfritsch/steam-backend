@@ -27,6 +27,8 @@ app.get('/games/:id', gamesController.getGameById);
 app.get('/games/from/:from/size/:size/field/:field/order/:order', gamesController.getGamesByPaginationAndSort);
 //GET : récupère la liste des jeux en utilisant la pagination (from et size) et la recherche (search)
 app.get('/games/from/:from/size/:size/search/:search', gamesController.searchGames);
+//GET : récupère la liste des jeux en utilisant la pagination (from et size) et la recherche (search) pour l'auto complétion
+app.get('/games/from/:from/size/:size/searchAutocompletion/:search', gamesController.searchGamesForAutoCompletion);
 
 //POST : enregistre un utilisateur
 app.post('/user/register', usersController.registerUser);

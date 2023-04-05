@@ -100,14 +100,6 @@ const searchGames = async (req, res) => {
                                         fuzziness: "AUTO"
                                     }
                                 }
-                            },
-                            {
-                                match_phrase_prefix: {
-                                    name: {
-                                        query: search,
-                                        max_expansions: 10
-                                    }
-                                }
                             }
                         ]
                     }
@@ -121,9 +113,50 @@ const searchGames = async (req, res) => {
     }
 };
 
+const searchGamesForAutoCompletion = async (req, res) => {
+    try {
+        const search = req.params.search;
+        const from = parseInt(req.params.from);
+        const size = parseInt(req.params.size);
+        const response = await client.search({
+            index: 'steam_games',
+            from: from,
+            size: size,
+            body: {
+                query: {
+                    bool: {
+                        must: [
+                            {
+                                match: {
+                                    name: {
+                                        query: search,
+                                        fuzziness: "AUTO"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                _source: ["_id", "name"] // ajouter cette option pour spécifier les champs à renvoyer
+            }
+        });
+        const hits = response.hits.hits.map(hit => {
+            return {
+                _id: hit._id,
+                name: hit._source.name
+            };
+        });
+        res.send(hits);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(error.message);
+    }
+};
+
 module.exports = {
     getGamesByPagination,
     getGameById,
     getGamesByPaginationAndSort,
-    searchGames
+    searchGames,
+    searchGamesForAutoCompletion
 };
